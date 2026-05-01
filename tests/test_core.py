@@ -1,5 +1,5 @@
 import pytest
-from prime_pack_spanji2.core import is_prime, primes, checksum, pipeline
+from prime_pack_spanji.core import is_prime, primes, checksum, pipeline
 
 
 class TestIsPrime:
