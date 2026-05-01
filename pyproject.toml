@@ -1,5 +1,5 @@
 [project]
-name = "prime_pack_spanji2"
+name = "prime_pack_spanji"
 version = "0.1.0"
 description = "Prime numbers checksum package"
 requires-python = ">=3.10"
