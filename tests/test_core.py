@@ -57,7 +57,6 @@ class TestIsPrime:
         assert not is_prime(9)
 
     def test_prime_2_only_even(self):
-        # 2 is the only even prime
         assert is_prime(2)
         assert not is_prime(4)
         assert not is_prime(6)
@@ -104,11 +103,9 @@ class TestPrimes:
         assert isinstance(primes(5), list)
 
     def test_1000th_prime(self):
-        # 1000th prime is 7919
         assert primes(1000)[-1] == 7919
 
     def test_100th_prime(self):
-        # 100th prime is 541
         assert primes(100)[-1] == 541
 
 
@@ -122,8 +119,23 @@ class TestChecksum:
     def test_single_element_2(self):
         assert checksum([2]) == 226
 
+    def test_single_element_3(self):
+        assert checksum([3]) == 339
+
+    def test_single_element_5(self):
+        assert checksum([5]) == 565
+
     def test_known_example_from_spec(self):
         assert checksum([1, 2, 6, 24]) == 6_012_369
+
+    def test_two_elements(self):
+        assert checksum([1, 2]) == 12995
+
+    def test_checksum_first_5_primes(self):
+        assert checksum([2, 3, 5, 7, 11]) == 5_124_642
+
+    def test_checksum_first_10_primes(self):
+        assert checksum(primes(10)) == 4_405_291
 
     def test_result_less_than_modulo(self):
         assert checksum(primes(1000)) < 10_000_007
@@ -135,19 +147,7 @@ class TestChecksum:
         assert checksum([1, 2]) != checksum([2, 1])
 
     def test_modulo_applied(self):
-        # Result must always be less than 10_000_007
         assert checksum([10_000_000] * 100) < 10_000_007
-
-    def test_two_elements(self):
-        # (0+1)*113=113, (113+2)*113=12995
-        assert checksum([1, 2]) == 12995
-
-    def test_checksum_specific_primes(self):
-        # checksum of first 5 primes [2,3,5,7,11] must be exact
-        assert checksum([2, 3, 5, 7, 11]) == 5_559_584
-
-    def test_checksum_single_3(self):
-        assert checksum([3]) == 339
 
 
 class TestPipeline:
@@ -156,6 +156,15 @@ class TestPipeline:
 
     def test_explicit_params(self):
         assert pipeline(count=1000, seed=100) == 7_785_816
+
+    def test_pipeline_10_seed_42(self):
+        assert pipeline(count=10, seed=42) == 9_457_150
+
+    def test_pipeline_10_seed_1(self):
+        assert pipeline(count=10, seed=1) == 9_017_912
+
+    def test_pipeline_50_seed_100(self):
+        assert pipeline(count=50, seed=100) == 4_199_894
 
     def test_returns_int(self):
         assert isinstance(pipeline(), int)
@@ -175,8 +184,3 @@ class TestPipeline:
         r1 = pipeline(count=100, seed=100)
         r2 = pipeline(count=200, seed=100)
         assert r1 != r2
-     def test_checksum_single_5(self):
-        assert checksum([5]) == 565
-
-    def test_pipeline_seed_42(self):
-        assert pipeline(count=10, seed=42) == 2_pur_specific_value
