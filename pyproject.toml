@@ -1,6 +1,6 @@
 [project]
 name = "prime_pack_spanji"
-version = "0.1.0"
+version = "0.1.2"
 description = "Prime numbers checksum package"
 requires-python = ">=3.10"
 dependencies = [
