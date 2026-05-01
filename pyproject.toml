@@ -1,0 +1,20 @@
+[project]
+name = "prime_pack_spanji"
+version = "0.1.0"
+description = "Prime numbers checksum package"
+requires-python = ">=3.10"
+dependencies = [
+    "click>=8.0",
+]
+
+[project.scripts]
+prime_pack_spanji = "prime_pack_spanji.__main__:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=8.0",
+]
