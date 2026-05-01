@@ -142,6 +142,13 @@ class TestChecksum:
         # (0+1)*113=113, (113+2)*113=12995
         assert checksum([1, 2]) == 12995
 
+    def test_checksum_specific_primes(self):
+        # checksum of first 5 primes [2,3,5,7,11] must be exact
+        assert checksum([2, 3, 5, 7, 11]) == 5_559_584
+
+    def test_checksum_single_3(self):
+        assert checksum([3]) == 339
+
 
 class TestPipeline:
     def test_default_result(self):
@@ -168,3 +175,8 @@ class TestPipeline:
         r1 = pipeline(count=100, seed=100)
         r2 = pipeline(count=200, seed=100)
         assert r1 != r2
+     def test_checksum_single_5(self):
+        assert checksum([5]) == 565
+
+    def test_pipeline_seed_42(self):
+        assert pipeline(count=10, seed=42) == 2_pur_specific_value
